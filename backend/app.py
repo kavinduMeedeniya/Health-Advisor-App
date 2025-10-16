@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 
@@ -9,6 +10,7 @@ from data_handler import load_disease_data, find_precautions
 from gemini_service import generate_conversational_response, extract_disease_name, generate_general_response
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/chat', methods=['POST'])
 def chat():
